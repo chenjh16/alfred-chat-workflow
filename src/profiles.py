@@ -13,6 +13,7 @@ def provider_items():
         ("ollama", "Ollama", env_var("ollama_model")),
         ("deepseek", "DeepSeek", env_var("deepseek_model")),
         ("cerebras", "Cerebras", env_var("cerebras_model")),
+        ("openrouter", "OpenRouter", env_var("openrouter_model")),
     ]
 
     current = env_var("selected_llm_service") or ""

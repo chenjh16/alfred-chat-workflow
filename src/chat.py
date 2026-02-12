@@ -9,6 +9,7 @@ from gemini import GeminiService
 from helper import *
 from ollama import OllamaService
 from openai import OpenaiService
+from openrouter import OpenRouterService
 from qwen import QwenService
 
 
@@ -54,6 +55,10 @@ def run(argv):
     cerebras_api_key = env_var("cerebras_api_key")
     cerebras_model = env_var("cerebras_model")
 
+    openrouter_api_endpoint = env_var("openrouter_api_endpoint")
+    openrouter_api_key = env_var("openrouter_api_key")
+    openrouter_model = env_var("openrouter_model")
+
     llm_service = None
     if selected_llm_service == "openai":
         llm_service = OpenaiService(
@@ -92,6 +97,14 @@ def run(argv):
             cerebras_api_endpoint,
             cerebras_api_key,
             cerebras_model,
+            http_proxy,
+            socks5_proxy,
+        )
+    elif selected_llm_service == "openrouter":
+        llm_service = OpenRouterService(
+            openrouter_api_endpoint,
+            openrouter_api_key,
+            openrouter_model,
             http_proxy,
             socks5_proxy,
         )

@@ -1943,32 +1943,36 @@ Here is how to get those api-keys:
 				<key>pairs</key>
 				<array>
 					<array>
-						<string>openai</string>
-						<string>openai</string>
-					</array>
-					<array>
 						<string>anthropic</string>
 						<string>anthropic</string>
 					</array>
 					<array>
-						<string>gemini</string>
-						<string>gemini</string>
-					</array>
-					<array>
-						<string>qwen</string>
-						<string>qwen</string>
-					</array>
-					<array>
-						<string>ollama</string>
-						<string>ollama</string>
+						<string>cerebras</string>
+						<string>cerebras</string>
 					</array>
 					<array>
 						<string>deepseek</string>
 						<string>deepseek</string>
 					</array>
 					<array>
-						<string>cerebras</string>
-						<string>cerebras</string>
+						<string>gemini</string>
+						<string>gemini</string>
+					</array>
+					<array>
+						<string>ollama</string>
+						<string>ollama</string>
+					</array>
+					<array>
+						<string>openai</string>
+						<string>openai</string>
+					</array>
+					<array>
+						<string>openrouter</string>
+						<string>openrouter</string>
+					</array>
+					<array>
+						<string>qwen</string>
+						<string>qwen</string>
 					</array>
 				</array>
 			</dict>
@@ -1980,6 +1984,440 @@ Here is how to get those api-keys:
 			<string>popupbutton</string>
 			<key>variable</key>
 			<string>selected_llm_service</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Save current chat when starting a new one</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Keep History</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>chat_history_save</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>defaultvalue</key>
+				<integer>24</integer>
+				<key>markercount</key>
+				<integer>25</integer>
+				<key>maxvalue</key>
+				<integer>50</integer>
+				<key>minvalue</key>
+				<integer>2</integer>
+				<key>onlystoponmarkers</key>
+				<true/>
+				<key>showmarkers</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>How many older questions and answers to send.</string>
+			<key>label</key>
+			<string>Context</string>
+			<key>type</key>
+			<string>slider</string>
+			<key>variable</key>
+			<string>max_context</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+				<key>verticalsize</key>
+				<integer>3</integer>
+			</dict>
+			<key>description</key>
+			<string>Initial message to guide the LLM on the answers you expect.</string>
+			<key>label</key>
+			<string>System Prompt</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>system_prompt</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>2048</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>1024</string>
+						<string>1024</string>
+					</array>
+					<array>
+						<string>2048</string>
+						<string>2048</string>
+					</array>
+					<array>
+						<string>4096</string>
+						<string>4096</string>
+					</array>
+					<array>
+						<string>8192</string>
+						<string>8192</string>
+					</array>
+					<array>
+						<string>16384</string>
+						<string>16384</string>
+					</array>
+					<array>
+						<string>32768</string>
+						<string>32768</string>
+					</array>
+					<array>
+						<string>65536</string>
+						<string>65536</string>
+					</array>
+					<array>
+						<string>131072</string>
+						<string>131072</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>MaxTokens</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>max_tokens</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>30</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>15s</string>
+						<string>15</string>
+					</array>
+					<array>
+						<string>30s</string>
+						<string>30</string>
+					</array>
+					<array>
+						<string>60s</string>
+						<string>60</string>
+					</array>
+					<array>
+						<string>120s</string>
+						<string>120</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Detect stalled streaming connection</string>
+			<key>label</key>
+			<string>Stall Timeout</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>stall_timeout_sec</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>127.0.0.7891</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>HTTP Proxy URL (e.g. http://127.0.0.1:7890)</string>
+			<key>label</key>
+			<string>Http Proxy</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>http_proxy</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>127.0.0.1:7890</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Socks5 Proxy URL (e.g. 127.0.0.1:7890)</string>
+			<key>label</key>
+			<string>Socks5 Proxy</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>socks5_proxy</string>
+		</dict>
+
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>API Key</string>
+			<key>label</key>
+			<string>Cerebras</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>cerebras_api_key</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>llama-3.3-70b</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Llama 3.3 70B</string>
+						<string>llama-3.3-70b</string>
+					</array>
+					<array>
+						<string>Llama 3.1 8B</string>
+						<string>llama3.1-8b</string>
+					</array>
+					<array>
+						<string>OpenAI GPT OSS</string>
+						<string>gpt-oss-120b</string>
+					</array>
+					<array>
+						<string>Qwen 2.5 32B</string>
+						<string>qwen-2.5-32b</string>
+					</array>
+					<array>
+						<string>Qwen 3 235B Instruct (Preview)</string>
+						<string>qwen-3-235b-a22b-instruct-2507</string>
+					</array>
+					<array>
+						<string>Z.ai GLM 4.7 (Preview)</string>
+						<string>zai-glm-4.7</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Model</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>cerebras_model</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>API Key</string>
+			<key>label</key>
+			<string>OpenRouter</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>openrouter_api_key</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>openrouter/free</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Auto: Free</string>
+						<string>openrouter/free</string>
+					</array>
+					<array>
+						<string>Free: Arcee AI Trinity Large Preview</string>
+						<string>arcee-ai/trinity-large-preview:free</string>
+					</array>
+					<array>
+						<string>Free: Arcee AI Trinity Mini</string>
+						<string>arcee-ai/trinity-mini:free</string>
+					</array>
+					<array>
+						<string>Free: Aurora Alpha</string>
+						<string>openrouter/aurora-alpha</string>
+					</array>
+					<array>
+						<string>Free: DeepSeek R1 0528</string>
+						<string>deepseek/deepseek-r1-0528:free</string>
+					</array>
+					<array>
+						<string>Free: Dolphin Mistral 24B Venice</string>
+						<string>cognitivecomputations/dolphin-mistral-24b-venice-edition:free</string>
+					</array>
+					<array>
+						<string>Free: Gemma 3 12B IT</string>
+						<string>google/gemma-3-12b-it:free</string>
+					</array>
+					<array>
+						<string>Free: Gemma 3 27B IT</string>
+						<string>google/gemma-3-27b-it:free</string>
+					</array>
+					<array>
+						<string>Free: Gemma 3 4B IT</string>
+						<string>google/gemma-3-4b-it:free</string>
+					</array>
+					<array>
+						<string>Free: Gemma 3n 2B IT</string>
+						<string>google/gemma-3n-e2b-it:free</string>
+					</array>
+					<array>
+						<string>Free: Gemma 3n 4B IT</string>
+						<string>google/gemma-3n-e4b-it:free</string>
+					</array>
+					<array>
+						<string>Free: Hermes 3 Llama 3.1 405B</string>
+						<string>nousresearch/hermes-3-llama-3.1-405b:free</string>
+					</array>
+					<array>
+						<string>Free: Liquid LFM 2.5 1.2B Instruct</string>
+						<string>liquid/lfm-2.5-1.2b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Liquid LFM 2.5 1.2B Thinking</string>
+						<string>liquid/lfm-2.5-1.2b-thinking:free</string>
+					</array>
+					<array>
+						<string>Free: Llama 3.2 3B Instruct</string>
+						<string>meta-llama/llama-3.2-3b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Llama 3.3 70B Instruct</string>
+						<string>meta-llama/llama-3.3-70b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Microsoft Phi 4</string>
+						<string>microsoft/phi-4:free</string>
+					</array>
+					<array>
+						<string>Free: Mistral Small 3.1 24B Instruct</string>
+						<string>mistralai/mistral-small-3.1-24b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Nvidia Nemotron 3 Nano 30B</string>
+						<string>nvidia/nemotron-3-nano-30b-a3b:free</string>
+					</array>
+					<array>
+						<string>Free: Nvidia Nemotron 70B Instruct</string>
+						<string>nvidia/llama-3.1-nemotron-70b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Nvidia Nemotron Nano 12B VL</string>
+						<string>nvidia/nemotron-nano-12b-v2-vl:free</string>
+					</array>
+					<array>
+						<string>Free: Nvidia Nemotron Nano 9B</string>
+						<string>nvidia/nemotron-nano-9b-v2:free</string>
+					</array>
+					<array>
+						<string>Free: OpenAI GPT OSS 120B</string>
+						<string>openai/gpt-oss-120b:free</string>
+					</array>
+					<array>
+						<string>Free: OpenAI GPT OSS 20B</string>
+						<string>openai/gpt-oss-20b:free</string>
+					</array>
+					<array>
+						<string>Free: Qwen 2.5 72B Instruct</string>
+						<string>qwen/qwen-2.5-72b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Qwen 2.5 Coder 32B Instruct</string>
+						<string>qwen/qwen-2.5-coder-32b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: Qwen 3 4B</string>
+						<string>qwen/qwen3-4b:free</string>
+					</array>
+					<array>
+						<string>Free: Qwen 3 Coder</string>
+						<string>qwen/qwen3-coder:free</string>
+					</array>
+					<array>
+						<string>Free: Qwen 3 Next 80B Instruct</string>
+						<string>qwen/qwen3-next-80b-a3b-instruct:free</string>
+					</array>
+					<array>
+						<string>Free: StepFun 3.5 Flash</string>
+						<string>stepfun/step-3.5-flash:free</string>
+					</array>
+					<array>
+						<string>Free: TNG DeepSeek R1T Chimera</string>
+						<string>tngtech/deepseek-r1t-chimera:free</string>
+					</array>
+					<array>
+						<string>Free: TNG DeepSeek R1T2 Chimera</string>
+						<string>tngtech/deepseek-r1t2-chimera:free</string>
+					</array>
+					<array>
+						<string>Free: TNG R1T Chimera</string>
+						<string>tngtech/tng-r1t-chimera:free</string>
+					</array>
+					<array>
+						<string>Free: Upstage Solar Pro 3</string>
+						<string>upstage/solar-pro-3:free</string>
+					</array>
+					<array>
+						<string>Free: Z.ai GLM 4.5 Air</string>
+						<string>z-ai/glm-4.5-air:free</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Model</string>
+			<key>label</key>
+			<string></string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>openrouter_model</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -2339,260 +2777,8 @@ Here is how to get those api-keys:
 			<key>variable</key>
 			<string>deepseek_model</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string>API Key</string>
-			<key>label</key>
-			<string>Cerebras</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>cerebras_api_key</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>llama-3.3-70b</string>
-				<key>pairs</key>
-				<array>
-					<array>
-						<string>Llama 3.3 70B</string>
-						<string>llama-3.3-70b</string>
-					</array>
-					<array>
-						<string>Llama 3.1 8B</string>
-						<string>llama3.1-8b</string>
-					</array>
-					<array>
-						<string>OpenAI GPT OSS</string>
-						<string>gpt-oss-120b</string>
-					</array>
-					<array>
-						<string>Qwen 2.5 32B</string>
-						<string>qwen-2.5-32b</string>
-					</array>
-					<array>
-						<string>Qwen 3 235B Instruct (Preview)</string>
-						<string>qwen-3-235b-a22b-instruct-2507</string>
-					</array>
-					<array>
-						<string>Z.ai GLM 4.7 (Preview)</string>
-						<string>zai-glm-4.7</string>
-					</array>
-				</array>
-			</dict>
-			<key>description</key>
-			<string>Model</string>
-			<key>label</key>
-			<string></string>
-			<key>type</key>
-			<string>popupbutton</string>
-			<key>variable</key>
-			<string>cerebras_model</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<true/>
-				<key>required</key>
-				<false/>
-				<key>text</key>
-				<string>Save current chat when starting a new one</string>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>Keep History</string>
-			<key>type</key>
-			<string>checkbox</string>
-			<key>variable</key>
-			<string>chat_history_save</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>defaultvalue</key>
-				<integer>24</integer>
-				<key>markercount</key>
-				<integer>25</integer>
-				<key>maxvalue</key>
-				<integer>50</integer>
-				<key>minvalue</key>
-				<integer>2</integer>
-				<key>onlystoponmarkers</key>
-				<true/>
-				<key>showmarkers</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string>How many older questions and answers to send.</string>
-			<key>label</key>
-			<string>Context</string>
-			<key>type</key>
-			<string>slider</string>
-			<key>variable</key>
-			<string>max_context</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-				<key>verticalsize</key>
-				<integer>3</integer>
-			</dict>
-			<key>description</key>
-			<string>Initial message to guide the LLM on the answers you expect.</string>
-			<key>label</key>
-			<string>System Prompt</string>
-			<key>type</key>
-			<string>textarea</string>
-			<key>variable</key>
-			<string>system_prompt</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>2048</string>
-				<key>pairs</key>
-				<array>
-					<array>
-						<string>1024</string>
-						<string>1024</string>
-					</array>
-					<array>
-						<string>2048</string>
-						<string>2048</string>
-					</array>
-					<array>
-						<string>4096</string>
-						<string>4096</string>
-					</array>
-					<array>
-						<string>8192</string>
-						<string>8192</string>
-					</array>
-					<array>
-						<string>16384</string>
-						<string>16384</string>
-					</array>
-					<array>
-						<string>32768</string>
-						<string>32768</string>
-					</array>
-					<array>
-						<string>65536</string>
-						<string>65536</string>
-					</array>
-					<array>
-						<string>131072</string>
-						<string>131072</string>
-					</array>
-				</array>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>MaxTokens</string>
-			<key>type</key>
-			<string>popupbutton</string>
-			<key>variable</key>
-			<string>max_tokens</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string>30</string>
-				<key>pairs</key>
-				<array>
-					<array>
-						<string>15s</string>
-						<string>15</string>
-					</array>
-					<array>
-						<string>30s</string>
-						<string>30</string>
-					</array>
-					<array>
-						<string>60s</string>
-						<string>60</string>
-					</array>
-					<array>
-						<string>120s</string>
-						<string>120</string>
-					</array>
-				</array>
-			</dict>
-			<key>description</key>
-			<string>Detect stalled streaming connection</string>
-			<key>label</key>
-			<string>Stall Timeout</string>
-			<key>type</key>
-			<string>popupbutton</string>
-			<key>variable</key>
-			<string>stall_timeout_sec</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string>127.0.0.7891</string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>Http Proxy</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>http_proxy</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string>127.0.0.1:7890</string>
-				<key>required</key>
-				<false/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string></string>
-			<key>label</key>
-			<string>Socks5 Proxy</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>socks5_proxy</string>
-		</dict>
+
+
 	</array>
 	<key>variables</key>
 	<dict>
@@ -2608,6 +2794,8 @@ Here is how to get those api-keys:
 		<string>https://dashscope.aliyuncs.com</string>
 		<key>cerebras_api_endpoint</key>
 		<string>https://api.cerebras.ai</string>
+		<key>openrouter_api_endpoint</key>
+		<string>https://openrouter.ai/api/v1</string>
 	</dict>
 	<key>version</key>
 	<string>2025.6</string>

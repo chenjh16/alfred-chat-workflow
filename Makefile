@@ -1,4 +1,4 @@
-.PHONY: help bump-version build clean
+.PHONY: help all bump-version build install clean
 
 # Shell setup
 SHELL := /bin/bash
@@ -17,10 +17,14 @@ NEW_VERSION = $(shell \
 	fi \
 )
 
+all: build install
+
 help:
 	@echo "Available targets:"
+	@echo "  make          - Build and install the workflow (Default)"
 	@echo "  bump-version  - Increment version in info.plist (Current: $(CURRENT_VERSION) -> Next: $(NEW_VERSION))"
 	@echo "  build         - Package the workflow into an .alfredworkflow file"
+	@echo "  install       - Open the built .alfredworkflow file to install in Alfred"
 	@echo "  clean         - Remove generated .alfredworkflow files"
 
 bump-version:
@@ -32,6 +36,11 @@ build:
 	@echo "Building Alfred Workflow v$(CURRENT_VERSION)..."
 	@zip -r alfred-chathub-v$(CURRENT_VERSION).alfredworkflow . -x "*.git*" "*.github*" "*.DS_Store" "Makefile" "AGENTS.md" "LICENSE"
 	@echo "Created alfred-chathub-v$(CURRENT_VERSION).alfredworkflow"
+
+install:
+	@echo "Installing Alfred Workflow v$(CURRENT_VERSION)..."
+	@open alfred-chathub-v$(CURRENT_VERSION).alfredworkflow
+	@echo "Opened alfred-chathub-v$(CURRENT_VERSION).alfredworkflow in Alfred"
 
 clean:
 	@echo "Cleaning up..."

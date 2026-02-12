@@ -7,6 +7,7 @@ A chat tool that integrates multiple popular large language model (LLM) services
 - [x] Qwen
 - [x] Deepseek
 - [x] Cerebras
+- [x] OpenRouter
 
 With the release of Alfred version 5.5, Alfred officially provided the [ChatGPT Workflow](https://github.com/alfredapp/openai-workflow), but it only supports OpenAI integration. When I installed and used it, my OpenAI API Key happened to be banned. Moreover, the ChatGPT Workflow is mainly based on JXA (JavaScript for Automation), which is difficult to extend. Therefore, I rewrote it in Python and extended support for other LLM services such as Anthropic, Gemini, and Deepseek. Now, introducing support for a new LLM service is very easy.
 
@@ -28,6 +29,7 @@ Here is how to get those api-keys:
 - (Qwen)通义千问: https://help.aliyun.com/zh/dashscope/developer-reference/activate-dashscope-and-create-an-api-key
 - Deepseek: https://platform.deepseek.com/api_keys
 - Cerebras: https://cloud.cerebras.ai/
+- OpenRouter: https://openrouter.ai/keys
 
 ## Usage
 
