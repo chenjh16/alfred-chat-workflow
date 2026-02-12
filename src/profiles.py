@@ -12,6 +12,7 @@ def provider_items():
         ("qwen", "Qwen", env_var("qwen_model")),
         ("ollama", "Ollama", env_var("ollama_model")),
         ("deepseek", "DeepSeek", env_var("deepseek_model")),
+        ("cerebras", "Cerebras", env_var("cerebras_model")),
     ]
 
     current = env_var("selected_llm_service") or ""
@@ -21,12 +22,14 @@ def provider_items():
         suffix = " (current)" if key == current else ""
         title = f"{label}{suffix}"
         subtitle = model or ""
-        items.append({
-            "title": title,
-            "subtitle": subtitle,
-            "arg": key,
-            "icon": {"path": "icon.png"}
-        })
+        items.append(
+            {
+                "title": title,
+                "subtitle": subtitle,
+                "arg": key,
+                "icon": {"path": "icon.png"},
+            }
+        )
 
     return items
 
@@ -38,4 +41,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
