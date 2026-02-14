@@ -33,7 +33,7 @@ jobs:
 
       - name: Build Workflow
         run: |
-          zip -r alfred-chathub-v${{ steps.version.outputs.NEW_VERSION }}.alfredworkflow . -x "*.git*" "*.github*"
+          zip -r alfred-chathub-v${{ steps.version.outputs.NEW_VERSION }}.alfredworkflow icon.png info.plist assets src
 
       - name: Release
         uses: softprops/action-gh-release@v2

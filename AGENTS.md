@@ -15,7 +15,7 @@
 ## Coding Style & Naming Conventions
 - Python: PEP 8, 4‑space indents, explicit/clear identifiers. Remove unused imports.
 - Comments: only for复杂逻辑且必须使用中文注释；避免赘述性的显而易见注释。
-- Trailing whitespace: none. After `git add`, run `/Users/xuyecan/.macconfig/script/strip-trailing-ws-in-diff --staged`.
+- Trailing whitespace: none. After `git add`, run `/Users/substance/.macconfig/script/strip-trailing-ws-in-diff --staged`.
 - Logs/output: technical output不得包含表情符号。
 - Curly‑brace languages (if introduced): opening brace on same line; always use braces for single‑line bodies.
 - Author header (when a source file requires it): `@author Created by Claude Code on 2025-10-10`.

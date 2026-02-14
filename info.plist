@@ -5,7 +5,7 @@
 	<key>bundleid</key>
 	<string>com.xyc.alfredworkflow.chathub</string>
 	<key>category</key>
-	<string>Tools</string>
+	<string>Internet</string>
 	<key>connections</key>
 	<dict>
 		<key>002874FF-3AE4-4E8F-A4F8-65844E5D6CFB</key>
@@ -142,7 +142,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>B2F04B2C-63AD-4A6D-9A81-7F333D0A075A</string>
+				<string>BF340515-39CD-47C9-965D-B1631A3BF45F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -597,7 +597,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>xuyecan</string>
+	<string>chenjh16</string>
 	<key>description</key>
 	<string>popular LLM service integrations</string>
 	<key>disabled</key>
@@ -688,11 +688,9 @@
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>7</integer>
+				<integer>0</integer>
 				<key>hotmod</key>
-				<integer>393216</integer>
-				<key>hotstring</key>
-				<string>X</string>
+				<integer>0</integer>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1421,17 +1419,17 @@ fi</string>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>focusedappvariable</key>
 				<false/>
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>hotmod</key>
-				<integer>393216</integer>
+				<integer>0</integer>
 				<key>hotstring</key>
-				<string>Z</string>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1572,36 +1570,62 @@ JXA</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string># &lt;img src='icon.png' width='45' align='center' alt='icon'&gt; Alfred-Chathub
+	<string># Alfred-Chathub
 
-A chat tool that integrates multiple popular large language model (LLM) services, including OpenAI, Anthropic, Gemini, etc. Currently supports:
+A chat tool that integrates multiple popular large language model (LLM) services, including OpenAI, Anthropic, Gemini, DeepSeek, etc. Currently supports:
 - [x] OpenAI
 - [x] Anthropic
 - [x] Gemini
 - [x] Qwen
+- [x] Deepseek
+- [x] Cerebras
+- [x] OpenRouter
 
-With the release of Alfred version 5.5, Alfred officially provided the [ChatGPT Workflow](https://github.com/alfredapp/openai-workflow), but it only supports OpenAI integration. When I installed and used it, my OpenAI API Key happened to be banned. Moreover, the ChatGPT Workflow is mainly based on JXA (JavaScript for Automation), which is difficult to extend. Therefore, I rewrote it in Python and extended support for other LLM services such as Anthropic and Gemini. Now, introducing support for a new LLM service is very easy.
+With the release of Alfred version 5.5, Alfred officially provided the [ChatGPT Workflow](https://github.com/alfredapp/openai-workflow), but it only supports OpenAI integration. When I installed and used it, my OpenAI API Key happened to be banned. Moreover, the ChatGPT Workflow is mainly based on JXA (JavaScript for Automation), which is difficult to extend. Therefore, I rewrote it in Python and extended support for other LLM services such as Anthropic, Gemini, and Deepseek. Now, introducing support for a new LLM service is very easy.
+
+## Requirements
+
+- Alfred 5 (Powerpack required). This workflow relies on Alfred 5's User Configuration panel and automation APIs.
+- Python 3 available on your system. Verify with:
+  - `/usr/bin/env python3 -c "import sys; print(sys.executable)"`
 
 ## Prerequisites
 
-1. You need to choose an LLM service, register an account on its official website, and obtain an API Key.
-2. Install python3, ensuring that `/usr/bin/env python3 -c "import sys; print(sys.executable)"` prints the correct path to your python3.
+1. Choose an LLM provider, register on its website, and obtain an API Key.
+2. Ensure your Python 3 path resolves correctly as above.
 
 Here is how to get those api-keys:
 - OpenAI: https://platform.openai.com/api-keys
 - Anthropic: https://console.anthropic.com/settings/keys
 - Gemini: https://ai.google.dev/gemini-api/docs/api-key
 - (Qwen)通义千问: https://help.aliyun.com/zh/dashscope/developer-reference/activate-dashscope-and-create-an-api-key
+- Deepseek: https://platform.deepseek.com/api_keys
+- Cerebras: https://cloud.cerebras.ai/
+- OpenRouter: https://openrouter.ai/keys
 
 ## Usage
 
 1. Install the workflow. Typically, you just need to download the latest version from the release page and click to install it.
-2. Perform basic configuration. You need to select a provider, and set the corresponding Api Key, Model. If necessary, set a proxy.
+2. Perform basic configuration. Select a provider and set its API Key and Model. If necessary, set a proxy.
+
 ![Main Config](assets/main_config.png)
+
 3. Make sure the endpoint is correct.
+
 ![Endpoint Config](assets/endpoint_config.png)
-4. Enjoy.
-&gt; Tip: Enhance the user experience by adding hotkey triggers. By default, ctrl + shift + z is preset to open the chat history, while ctrl + shift + x starts a new chat. However, feel free to customize these hotkeys according to your preference.
+
+4. Switch provider quickly with `chp`.
+
+   - Invoke Alfred and type `chp`, then pick a provider from the list.
+   - Your selection is immediately written back to Alfred's Configure panel (User Configuration) and becomes the active provider for chats.
+   - The current provider is also highlighted in the `chp` list for quick confirmation.
+
+5. Enjoy.
+&gt; Tip: Enhance your user experience by adding hotkey triggers. After installation, the workflow's hotkey triggers are initially unset. We recommend using Ctrl + Shift + Z to open chat history and Ctrl + Shift + X to start a new chat, but feel free to customize these to your liking.
+
+![Hotkey Setting](assets/hotkey_setting.png)
+
+## Showcase
 
 ![Ask Chathub](assets/ask_chathub.png)
 ![Chat](assets/chat.png)
@@ -1939,7 +1963,7 @@ Here is how to get those api-keys:
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>openai</string>
+				<string>cerebras</string>
 				<key>pairs</key>
 				<array>
 					<array>
@@ -2058,36 +2082,76 @@ Here is how to get those api-keys:
 				<key>pairs</key>
 				<array>
 					<array>
+						<string>8 Tokens</string>
+						<string>8</string>
+					</array>
+					<array>
+						<string>16 Tokens</string>
+						<string>16</string>
+					</array>
+					<array>
+						<string>32 Tokens</string>
+						<string>32</string>
+					</array>
+					<array>
+						<string>64 Tokens</string>
+						<string>64</string>
+					</array>
+					<array>
+						<string>128 Tokens</string>
+						<string>128</string>
+					</array>
+					<array>
+						<string>256 Tokens</string>
+						<string>256</string>
+					</array>
+					<array>
+						<string>512 Tokens</string>
+						<string>512</string>
+					</array>
+					<array>
+						<string>1k</string>
 						<string>1024</string>
-						<string>1024</string>
 					</array>
 					<array>
+						<string>2k</string>
 						<string>2048</string>
-						<string>2048</string>
 					</array>
 					<array>
+						<string>4k</string>
 						<string>4096</string>
-						<string>4096</string>
 					</array>
 					<array>
+						<string>8k</string>
 						<string>8192</string>
-						<string>8192</string>
 					</array>
 					<array>
+						<string>16k</string>
 						<string>16384</string>
-						<string>16384</string>
 					</array>
 					<array>
+						<string>32k</string>
 						<string>32768</string>
-						<string>32768</string>
 					</array>
 					<array>
-						<string>65536</string>
+						<string>64k</string>
 						<string>65536</string>
 					</array>
 					<array>
+						<string>128k</string>
 						<string>131072</string>
-						<string>131072</string>
+					</array>
+					<array>
+						<string>256k</string>
+						<string>262144</string>
+					</array>
+					<array>
+						<string>512k</string>
+						<string>524288</string>
+					</array>
+					<array>
+						<string>1m</string>
+						<string>1048576</string>
 					</array>
 				</array>
 			</dict>
@@ -2107,6 +2171,14 @@ Here is how to get those api-keys:
 				<string>30</string>
 				<key>pairs</key>
 				<array>
+					<array>
+						<string>5s</string>
+						<string>5</string>
+					</array>
+					<array>
+						<string>10s</string>
+						<string>10</string>
+					</array>
 					<array>
 						<string>15s</string>
 						<string>15</string>
@@ -2140,14 +2212,14 @@ Here is how to get those api-keys:
 				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
-				<string>127.0.0.7891</string>
+				<string>127.0.0.1:7890</string>
 				<key>required</key>
 				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>HTTP Proxy URL (e.g. http://127.0.0.1:7890)</string>
+			<string>HTTP Proxy (e.g. 127.0.0.1:7890). Takes precedence over Socks5.</string>
 			<key>label</key>
 			<string>Http Proxy</string>
 			<key>type</key>
@@ -2168,7 +2240,7 @@ Here is how to get those api-keys:
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Socks5 Proxy URL (e.g. 127.0.0.1:7890)</string>
+			<string>Socks5 Proxy (e.g. 127.0.0.1:7890)</string>
 			<key>label</key>
 			<string>Socks5 Proxy</string>
 			<key>type</key>
@@ -2176,7 +2248,6 @@ Here is how to get those api-keys:
 			<key>variable</key>
 			<string>socks5_proxy</string>
 		</dict>
-
 		<dict>
 			<key>config</key>
 			<dict>
@@ -2202,7 +2273,7 @@ Here is how to get those api-keys:
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>llama-3.3-70b</string>
+				<string>gpt-oss-120b</string>
 				<key>pairs</key>
 				<array>
 					<array>
@@ -2214,7 +2285,7 @@ Here is how to get those api-keys:
 						<string>llama3.1-8b</string>
 					</array>
 					<array>
-						<string>OpenAI GPT OSS</string>
+						<string>OpenAI GPT OSS 120B</string>
 						<string>gpt-oss-120b</string>
 					</array>
 					<array>
@@ -2265,7 +2336,7 @@ Here is how to get those api-keys:
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>openrouter/free</string>
+				<string>stepfun/step-3.5-flash:free</string>
 				<key>pairs</key>
 				<array>
 					<array>
@@ -2777,29 +2848,27 @@ Here is how to get those api-keys:
 			<key>variable</key>
 			<string>deepseek_model</string>
 		</dict>
-
-
 	</array>
 	<key>variables</key>
 	<dict>
 		<key>anthropic_api_endpoint</key>
 		<string>https://api.anthropic.com</string>
+		<key>cerebras_api_endpoint</key>
+		<string>https://api.cerebras.ai</string>
 		<key>deepseek_api_endpoint</key>
 		<string>https://api.deepseek.com</string>
 		<key>gemini_api_endpoint</key>
 		<string>https://generativelanguage.googleapis.com</string>
 		<key>openai_api_endpoint</key>
 		<string>https://api.openai.com</string>
-		<key>qwen_api_endpoint</key>
-		<string>https://dashscope.aliyuncs.com</string>
-		<key>cerebras_api_endpoint</key>
-		<string>https://api.cerebras.ai</string>
 		<key>openrouter_api_endpoint</key>
 		<string>https://openrouter.ai/api/v1</string>
+		<key>qwen_api_endpoint</key>
+		<string>https://dashscope.aliyuncs.com</string>
 	</dict>
 	<key>version</key>
 	<string>2025.6</string>
 	<key>webaddress</key>
-	<string>https://github.com/xuyecan/alfred-chathub</string>
+	<string>https://github.com/chenjh16/alfred-chat-workflow</string>
 </dict>
 </plist>

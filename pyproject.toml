@@ -1,0 +1,52 @@
+[project]
+name = "alfred-chathub-workflow"
+version = "2025.6"
+description = "A chat tool that integrates multiple popular large language model (LLM) services"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "chenjh16", email = "chenjh16@qq.com"}
+]
+dependencies = [
+    "requests",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pylint",
+    "mypy",
+    "ruff",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+ignore = [
+]
+
+[tool.pylint.messages_control]
+disable = [
+    "R0903", # too-few-public-methods
+    "R0913", # too-many-arguments
+    "R0914", # too-many-locals
+    "W0703", # broad-except
+    "W0603", # global-statement
+    "R0801", # duplicate-code
+    "R0912", # too-many-branches
+    "R0915", # too-many-statements
+    "R0917", # too-many-positional-arguments
+]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_untyped_defs = false

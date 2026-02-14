@@ -1,9 +1,20 @@
+"""
+Cerebras LLM service implementation.
+"""
+
 import json
-from openai import OpenaiService
+
+from .openai import OpenaiService
 
 
 class CerebrasService(OpenaiService):
-    def construct_curl_command(self, max_tokens, messages, stream_file) -> list:
+    """
+    Service for interacting with Cerebras LLM API, compatible with OpenAI.
+    """
+
+    def construct_curl_command(
+        self, max_tokens, messages, stream_file, system_prompt=None
+    ) -> list:
         data = {
             "model": self.model,
             "messages": messages,

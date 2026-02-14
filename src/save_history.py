@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
+"""
+Workflow history saving module.
+"""
 
 import os
 from datetime import datetime
-from helper import *
+from helper import env_var, make_dir, mv, write_file
+
 
 def pad_date(number):
+    """Pad a number with a leading zero if it is less than 10."""
     return str(number).zfill(2)
 
+
 def run():
+    """Archive the current chat history and start a new one."""
     uid = os.urandom(16).hex()[:8]  # Generates a unique identifier
     current_date = datetime.now()
     current_year = current_date.year
@@ -18,13 +25,16 @@ def run():
     current_second = pad_date(current_date.second)
 
     current_chat = f"{env_var('alfred_workflow_data')}/chat.json"
-    replacement_chat = env_var('replace_with_chat')
+    replacement_chat = env_var("replace_with_chat")
 
     if replacement_chat == current_chat:
         return
 
     archive_dir = f"{env_var('alfred_workflow_data')}/archive"
-    archived_chat = f"{archive_dir}/{current_year}.{current_month}.{current_day}.{current_hour}.{current_minute}.{current_second}-{uid}.json"
+    archived_chat = (
+        f"{archive_dir}/{current_year}.{current_month}.{current_day}."
+        f"{current_hour}.{current_minute}.{current_second}-{uid}.json"
+    )
 
     make_dir(archive_dir)
     mv(current_chat, archived_chat)
@@ -33,6 +43,7 @@ def run():
         mv(replacement_chat, current_chat)
     else:
         write_file(current_chat, "[]")
+
 
 if __name__ == "__main__":
     run()

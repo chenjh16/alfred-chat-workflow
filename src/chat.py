@@ -1,19 +1,33 @@
 #!/usr/bin/env python3
+"""
+Main entry point for the chat workflow using various LLM services.
+"""
 
+import json
 import sys
+from typing import Optional
 
-from anthropic import AnthropicService
-from cerebras import CerebrasService
-from deepseek import DeepseekService
-from gemini import GeminiService
-from helper import *
-from ollama import OllamaService
-from openai import OpenaiService
-from openrouter import OpenRouterService
-from qwen import QwenService
+from helper import append_chat, env_var, file_exists, markdown_chat, read_chat
+from llm import (
+    AnthropicService,
+    CerebrasService,
+    DeepseekService,
+    GeminiService,
+    OllamaService,
+    OpenaiService,
+    OpenRouterService,
+    QwenService,
+    LLMService,
+)
 
 
 def run(argv):
+    """
+    Execute the chat workflow.
+
+    Args:
+        argv: Command line arguments, expected to contain the user query.
+    """
     typed_query = argv[0]
     max_context = int(env_var("max_context"))
     max_tokens = int(env_var("max_tokens"))
@@ -59,7 +73,7 @@ def run(argv):
     openrouter_api_key = env_var("openrouter_api_key")
     openrouter_model = env_var("openrouter_model")
 
-    llm_service = None
+    llm_service: Optional[LLMService] = None
     if selected_llm_service == "openai":
         llm_service = OpenaiService(
             openai_api_endpoint, openai_api_key, openai_model, http_proxy, socks5_proxy
@@ -108,6 +122,9 @@ def run(argv):
             http_proxy,
             socks5_proxy,
         )
+
+    if llm_service is None:
+        return json.dumps({"response": "Error: No valid LLM service selected."})
 
     if streaming_now:
         return llm_service.read_stream(

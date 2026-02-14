@@ -1,4 +1,4 @@
-.PHONY: help all bump-version build install clean
+.PHONY: help all bump-version build install lint clean
 
 # Shell setup
 SHELL := /bin/bash
@@ -25,6 +25,7 @@ help:
 	@echo "  bump-version  - Increment version in info.plist (Current: $(CURRENT_VERSION) -> Next: $(NEW_VERSION))"
 	@echo "  build         - Package the workflow into an .alfredworkflow file"
 	@echo "  install       - Open the built .alfredworkflow file to install in Alfred"
+	@echo "  lint          - Run linting checks (pylint, ruff, mypy)"
 	@echo "  clean         - Remove generated .alfredworkflow files"
 
 bump-version:
@@ -32,9 +33,17 @@ bump-version:
 	@sed -i '' "s/<string>$(CURRENT_VERSION)<\/string>/<string>$(NEW_VERSION)<\/string>/" info.plist
 	@echo "Version updated in info.plist"
 
+lint:
+	@echo "Running pylint..."
+	@pylint src || true
+	@echo "Running ruff..."
+	@ruff check src || true
+	@echo "Running mypy..."
+	@mypy src || true
+
 build:
 	@echo "Building Alfred Workflow v$(CURRENT_VERSION)..."
-	@zip -r alfred-chathub-v$(CURRENT_VERSION).alfredworkflow . -x "*.git*" "*.github*" "*.DS_Store" "Makefile" "AGENTS.md" "LICENSE"
+	@zip -r alfred-chathub-v$(CURRENT_VERSION).alfredworkflow icon.png info.plist assets src -x "*__pycache__*"
 	@echo "Created alfred-chathub-v$(CURRENT_VERSION).alfredworkflow"
 
 install:

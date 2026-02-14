@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
+"""
+Module to copy the last response from the chat history to the clipboard.
+"""
 
 from helper import env_var, read_chat
 
 
 def run():
+    """Get the last assistant response from the chat history."""
     chat_file = f"{env_var('alfred_workflow_data')}/chat.json"
     messages = read_chat(chat_file)
-    last_assistant = next((m for m in reversed(messages) if m.get("role") == "assistant"), None)
+    last_assistant = next(
+        (m for m in reversed(messages) if m.get("role") == "assistant"), None
+    )
     content = last_assistant.get("content") if last_assistant else None
     if not content:
         return ""
@@ -14,7 +20,7 @@ def run():
     legacy_prefixes = ("#### Assistant\n", "**Assistant:**\n\n")
     for prefix in legacy_prefixes:
         if content.startswith(prefix):
-            content = content[len(prefix):]
+            content = content[len(prefix) :]
             break
     return content
 
